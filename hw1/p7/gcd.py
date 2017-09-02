@@ -23,7 +23,8 @@ def gcd2(a, b):
     else:
         g, s, t = gcd2(b, rem)
         s = t
-        return g, s, (g - a*s)//b
+        t = (g - a*s)//b
+        return g, s, t
 
 def validate_gcd2(a, b, g, s, t):
     return gcd(a, b) == g and s*a + t*b == g

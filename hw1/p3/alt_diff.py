@@ -16,6 +16,13 @@ def alt_diff(nums):
         return diff_val
 
 if __name__ == '__main__':
-    print(alt_diff([3, 5, 4]))
-    print(alt_diff([6, 7]))
+    test_input = [
+        [3, 5, 4],
+        [6, 7],
+        [1, 2, 3, 4],
+        [29, -23, 1],
+    ]
+    for t_input in test_input:
+        output = alt_diff(t_input)
+        print('input:', t_input, '\t', 'output:', output)
 

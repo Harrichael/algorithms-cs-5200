@@ -2,6 +2,7 @@
 This file provides a non recursive alternative to a given function
 """
 
+from sys import setrecursionlimit
 from math import ceil
 
 def f(n):
@@ -27,3 +28,13 @@ if __name__ == '__main__':
         old_out = f(t_input)
         new_out = new_f(t_input)
         print('n =', t_input, '  \t', 'f(n) =', old_out, '\t', 'new_f(n) =', new_out)
+
+    print('Validating for -100,000 to 100')
+    setrecursionlimit(10000)
+    for val in range(-100000, 101):
+        if f(val) != new_f(val):
+            print('Invalid!')
+            break
+    else:
+        print('Valid!')
+

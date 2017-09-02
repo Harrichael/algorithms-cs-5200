@@ -29,6 +29,7 @@ if __name__ == '__main__':
         new_out = new_f(t_input)
         print('n =', t_input, '  \t', 'f(n) =', old_out, '\t', 'new_f(n) =', new_out)
 
+    sys.exit()
     print('Validating for -100,000 to 100')
     setrecursionlimit(10000)
     for val in range(-100000, 101):

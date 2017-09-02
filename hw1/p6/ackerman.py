@@ -29,7 +29,8 @@ if __name__ == '__main__':
         (3, 5),
         (3, 9),
         (4, 0),
-        (4, 1),
+        # (4, 1) Long time but hits recursion limit
+        # (5, 0), Hits recursion limit
     ]
 
     setrecursionlimit(10000)

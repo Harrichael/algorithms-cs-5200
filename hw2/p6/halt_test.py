@@ -13,5 +13,5 @@ if __name__ == '__main__':
     for val in range(low_bound, hi_bound + 1):
         depth(val)
 
-    print('Depth function did not hault for numbers {} to {}'.format(low_bound, hi_bound))
+    print('Depth function did not halt for numbers {} to {}'.format(low_bound, hi_bound))
 

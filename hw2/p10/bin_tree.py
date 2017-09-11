@@ -1,15 +1,14 @@
 
 def num_leafs(bin_tree):
     _, left, right = bin_tree
-    if not left and not right:
-        return 1
+    if left and right:
+        return num_leafs(left) + num_leafs(right)
+    elif left:
+        return num_leafs(left)
+    elif right:
+        return num_leafs(right)
     else:
-        left_count, right_count = 0, 0
-        if left:
-            left_count = num_leafs(left)
-        if right:
-            right_count = num_leafs(right)
-        return left_count + right_count
+        return 1
 
 def num_internals(bin_tree):
     _, left, right = bin_tree
@@ -35,7 +34,8 @@ def construct_bin_tree(sorted_sequence):
     return [median, left, right]
 
 if __name__ == '__main__':
-    for bin_tree_len in range(1, 101):
-        bin_tree = construct_bin_tree(range(bin_tree_len))
-        print('size(tree) =', bin_tree_len, ' \tleafs =', num_leafs(bin_tree), '\tinternals =', num_internals(bin_tree))
+    for depth in range(1, 20):
+        num_nodes = 2**depth - 1
+        bin_tree = construct_bin_tree(range(num_nodes))
+        print('num nodes =', num_nodes, '  \tleafs =', num_leafs(bin_tree), '\tinternals =', num_internals(bin_tree))
 

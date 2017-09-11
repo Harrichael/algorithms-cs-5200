@@ -9,8 +9,11 @@ def f(n):
 def estimate_1(n):
     return (n**2)/2
 
+def estimate_2(n):
+    return (n*(n+1))/2
+
 if __name__ == '__main__':
-    estimator = estimate_1
+    estimator = estimate_2
     for n in range(20):
         val = f(n)
         est = estimator(n)

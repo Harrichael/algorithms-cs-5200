@@ -30,7 +30,8 @@ def summation(f, vals):
 def f_i(i):
     return Fraction(i**2,  ( (2*i-1)*(2*i+1) ))
 
-def sum_f_i(vals):
+def sum_f_i(n):
+    vals = range(1, n+1)
     return summation(f_i, vals)
 
 def f_n(n):
@@ -40,7 +41,7 @@ def f_n(n):
 if __name__ == '__main__':
     max_val = 5000
     for val in range(1, max_val + 1):
-        sum_val = sum_f_i(range(1,val+1))
+        sum_val = sum_f_i(val)
         f_val = f_n(val)
         if sum_val != f_val:
             print('Conjecture does not hold for value: {}, got sum: {} and f(n): {}'.format(val, sum_val, f_val))

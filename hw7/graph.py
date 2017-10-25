@@ -13,7 +13,7 @@ class Graph:
 
     def add_edges(self, edges):
         for v1, v2 in edges:
-            if v2 not in self.edge_lists[v1]: # Edges are symetric
+            if v2 not in self.edge_lists[v1]: # Edges are symmetric
                 self.edge_lists[v1].append(v2)
                 self.edge_lists[v2].append(v1)
 

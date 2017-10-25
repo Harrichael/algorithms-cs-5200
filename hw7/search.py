@@ -19,12 +19,15 @@ class SearchSolver:
 Breadth First Graph Search
 """
 class BFGS(SearchSolver):
-    def __init__(self, initial_vertex, neighbors, is_goal):
+    def __init__(self, initial_set, neighbors, is_goal):
         self.goal = None
-        self.parents = {initial_vertex: None}
         explored = set()
+        self.parents = {}
         frontier = deque()
-        frontier.append(initial_vertex)
+        for initial_vertex in initial_set:
+            self.parents[initial_vertex] = None
+            frontier.append(initial_vertex)
+
         while True:
             if not frontier:
                 break
@@ -43,12 +46,15 @@ class BFGS(SearchSolver):
 Depth First Graph Search
 """
 class DFGS(SearchSolver):
-    def __init__(self, initial_vertex, neighbors, is_goal):
+    def __init__(self, initial_set, neighbors, is_goal):
         self.goal = None
-        self.parents = {initial_vertex: None}
         explored = set()
         frontier = []
-        frontier.append(initial_vertex)
+        self.parents = {}
+        for initial_vertex in initial_set:
+            self.parents[initial_vertex] = None
+            frontier.append(initial_vertex)
+
         while True:
             if not frontier:
                 break

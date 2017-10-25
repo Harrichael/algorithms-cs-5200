@@ -94,8 +94,8 @@ def test_graph_starts(graph, starts):
 
 def test_graph(graph, start):
     for end in graph.vertices:
-        bf_search = BFGS(start, graph.get_neighbor_func(), lambda n: n == end)
-        df_search = DFGS(start, graph.get_neighbor_func(), lambda n: n == end)
+        bf_search = BFGS([start], graph.get_neighbor_func(), lambda n: n == end)
+        df_search = DFGS([start], graph.get_neighbor_func(), lambda n: n == end)
 
         print('Dest =', end, bf_search.path, ' '*(30 - len(str(bf_search.path))), df_search.path)
 

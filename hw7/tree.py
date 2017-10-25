@@ -65,13 +65,3 @@ class Tree:
                 self.right = None
         return False 
 
-    def depth_first(self):
-        yield 0, self
-        if self.left:
-            for depth, node in self.left.depth_first():
-                yield depth + 1, node
-        if self.right:
-            for depth, node in self.right.depth_first():
-                yield depth + 1, node
-
-

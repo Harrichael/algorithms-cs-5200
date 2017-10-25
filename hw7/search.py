@@ -19,9 +19,11 @@ class SearchSolver:
 Breadth First Graph Search
 """
 class BFGS(SearchSolver):
-    def __init__(self, initial_set, neighbors, is_goal):
+    def __init__(self, initial_set, neighbors, is_goal, pre_explored=None):
         self.goal = None
-        explored = set()
+        self.explored = set()
+        if pre_explored:
+            self.explored.update(pre_explored)
         self.parents = {}
         frontier = deque()
         for initial_vertex in initial_set:
@@ -32,13 +34,13 @@ class BFGS(SearchSolver):
             if not frontier:
                 break
             select_node = frontier.popleft()
-            explored.add(select_node)
+            self.explored.add(select_node)
 
             if is_goal(select_node):
                 self.goal = select_node
                 break
 
-            for new_node in [n for n in neighbors(select_node) if n not in explored]:
+            for new_node in [n for n in neighbors(select_node) if n not in self.explored]:
                 self.parents[new_node] = select_node
                 frontier.append(new_node)
 
@@ -46,9 +48,11 @@ class BFGS(SearchSolver):
 Depth First Graph Search
 """
 class DFGS(SearchSolver):
-    def __init__(self, initial_set, neighbors, is_goal):
+    def __init__(self, initial_set, neighbors, is_goal, pre_explored=None):
         self.goal = None
-        explored = set()
+        self.explored = set()
+        if pre_explored:
+            self.explored.update(pre_explored)
         frontier = []
         self.parents = {}
         for initial_vertex in initial_set:
@@ -59,13 +63,13 @@ class DFGS(SearchSolver):
             if not frontier:
                 break
             select_node = frontier.pop()
-            explored.add(select_node)
+            self.explored.add(select_node)
 
             if is_goal(select_node):
                 self.goal = select_node
                 break
 
-            for new_node in [n for n in neighbors(select_node) if n not in explored]:
+            for new_node in [n for n in neighbors(select_node) if n not in self.explored]:
                 self.parents[new_node] = select_node
                 frontier.append(new_node)
 

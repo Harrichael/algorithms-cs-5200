@@ -22,7 +22,10 @@ def color_bipartite(nodes, edges):
         return False
 
     try:
-        BFGS(nodes, neighbors, check_node)
+        explored = []
+        for node in nodes:
+            searcher = BFGS([node], neighbors, check_node, explored)
+            explored = searcher.explored
     except ValueError:
         return False
 

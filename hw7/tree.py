@@ -51,10 +51,12 @@ class Tree:
             if self.left or self.right:
                 if (random.randint(0, 1) and self.left) or not self.right:
                     self.data = self.left.max()
-                    self.left.remove(self.data)
+                    if self.left.remove(self.data):
+                        self.left = None
                 else:
                     self.data = self.right.min()
-                    self.right.remove(self.data)
+                    if self.right.remove(self.data):
+                        self.right = None
             else:
                 return True
         elif value < self.data and self.left:

@@ -1,5 +1,6 @@
 
-from graph import Graph, BFGS, DFGS
+from graph import Graph
+from search import BFGS, DFGS
 
 graph1_edges = [
         (13, 0),
